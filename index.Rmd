@@ -9,63 +9,69 @@ An introduction of the problem domain and a description of the variable(s) you a
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+```{r, echo = FALSE}
+source('summary.R')
+name1 <- most_pop_name
+num1 <- most_pop_num
+name2 <-state_highest_black
+num2 <- number_highest_black
+name3 <- state_highest_white
+num3 <- number_highest_white
+name4 <- max_jail_name_08
+num4 <- max_jail_percent_08
+wa08 <- jail_wa_08
+wa18 <- jail_wa_18
+change <- change_rate
+```
+In my work, I include these 5 following data :
+The most popular state is `r name1`, with a population of `r num1`.
+The state with most whites in jail is `r name3`, it is `r num3`%.
+The state with most blacks in jail is `r name2`, it is `r num2`%.
+back in 2008, which is 10 years before the most recent data was collected,
+the state with most percent of population in jail is `r name4`, the number is `r num4`%.
+For our state Washington, the jail population percentage was `r wa08`% in 2008, and in 2018 the number was `r wa18`%; and decreases `r change`%.
 
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
+Who collected the data?  ***Vera Institute of Justice***
+How was the data collected or generated?  ***This work employed two Bureau of Justice Statistics (BJS) data collections: the Census of Jails (COJ), which covers all jails and is conducted every five to eight years since 1970, and the Annual Survey of Jails (ASJ), which covers about one-third of jails-and includes nearly all of the largest jails-that has been conducted in non-census years since 1982. ***
+Why was the data collected?  ***county-level variability makes for more robust, theoretically-grounded studies of the high rates of incarceration seen across the United States***
+How many observations (rows) are in your data?  ***153811 rows***
+How many features (columns) are in the data?  ***121 columns***
+What, if any, ethical questions or questions of power do you need to consider when working with this data?  ***Because the associations that control the data are mostly white, it is impossible to know whether they will obscure white data and enhance data for people of color in order to maintain a positive image of white people.***
 What are possible limitations or problems with this data?   (at least 200 words)
-
+***I think the overall data is comprehensive, however there are some flaws, because it only counted the number of prison, not the charges detailed classification, very bad for our study of the regional social unrest, for example, a prison criminals, the 100 shooting another prison 100 tax evasion of criminals, They are statistically the same, but the damage to society is different. This data table is also missing a lot of states with a small population, such as Delaware, which has a lot of NA values, which makes me make a lot of errors in the statistics; Besides this, I don't think he did a good job of explaining the definition of commuter area and urban area, which caused me great inconvenience when studying the relationship between crime and geography.***
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+source('Chart1.R')
+chart1
 ```
+
+In my chart1, I creat a plot to indicate the trend of total jail population over time in top 10 most jail population states. From the plot, I can conclude that in the southern area, the jail population increases from 1980s and reached its peak at 2000s, and after that the jail population decreases which could be a good indicator of its ecomonic growth.
+
+
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+source('Chart2.R')
+chart2
+```
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+***My chart2 indicates the correlation between the population density and total discharge amount. From the plot we can conclude that from 0~3000 person per square miles the discharge amount increases as the density grows. I think the reason is that the capacity of the jail gradually reached its maximum capacity. But after 3000, the number of discharge decreases as density grows. I think it could be critical in studying urban planning, and I assume that is because the priority of assigning the prisioners is higher in rural area than urban area. So when rural area reached it max capacity, the prisoner would be transfered to the jail in urban area, which causes the discharge amount lower in most popular areas.***
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+
+
+
+
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
-- Use a minimalist theme for the map 
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+source('Chart3.R')
+chart3
+```
+***In my chart 3, I create a map about the rate of jail population in each states. It is very useful to study on which states are the safest and which are the most dangerous. In my map, higher rate of jail population is indicated by red, and lower by yellow. We can conclude that the states with the most percent of jail population are Louisiana and Kentucky, the lowest are Vermont and Connecticut.***
