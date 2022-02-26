@@ -6,10 +6,11 @@ output: html_document
 ### Introduction
 
 An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+***the problem domain is that I want to address : how jail population change overtime? how is discharge amount correlates with the population density? and what states are with the highest jail population rates and what are with the lowest? I think my work is very useful for studying the human geography and economies.***
 
 ### Summary Information
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source('summary.R')
 name1 <- most_pop_name
 num1 <- most_pop_num
